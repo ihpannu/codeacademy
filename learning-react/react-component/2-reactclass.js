@@ -27,3 +27,14 @@ class extends React.Component { }
 // for building React components.You know that React.Component is a class, which you must subclass 
 // in order to create a component class of your own.You also know that React.Component is a property 
 // on the object which was returned by import React from 'react' on line 1.
+
+// Name a Component Class
+// Good! Subclassing React.Component is the way to declare a new component class.
+
+// When you declare a new component class, you need to give that component class a name.On line 4, notice that our component class's name is MyComponentClass.
+
+// Component class variable names must begin with capital letters!
+
+// This adheres to JavaScript's class syntax. It also adheres to a broader programming convention in which class names are written in UpperCamelCase.
+
+// In addition, there is a React - specific reason why component class names must always be capitalized.We'll get to that soon!
