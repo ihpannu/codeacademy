@@ -23,3 +23,17 @@
 // one render to the next.
 // If neither of these conditions are true, then you don't have to worry about keys. If you aren't
 //  sure then it never hurts to use them!
+
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const people = ['Rowe', 'Prevost', 'Gare'];
+
+const peopleLis = people.map((person, i) =>
+    // expression goes here:
+    <li key={'person_' + i}>{person}</li>
+);
+
+// ReactDOM.render goes here:
+ReactDOM.render(<ul>{peopleLis}</ul>, document.getElementById('app'));
