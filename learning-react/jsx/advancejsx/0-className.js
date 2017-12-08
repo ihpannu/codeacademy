@@ -13,3 +13,15 @@
 //                 This is because JSX gets translated into JavaScript, and class is a reserved word in JavaScript.
 
 // When JSX is rendered, JSX className attributes are automatically rendered as class attributes.
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+// Write code here:
+const myDiv = (
+    <div className="big">
+        I AM A BIG DIV
+  </div>
+);
+
+ReactDOM.render(myDiv, document.getElementById('app'));
