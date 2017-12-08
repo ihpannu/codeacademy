@@ -29,3 +29,11 @@ const theExample = (
      </h1>
     </a>
 );
+
+const myDiv = (
+    <div>
+        <h1>
+            Hello world
+    </h1>
+    </div>
+);
