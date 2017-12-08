@@ -22,3 +22,9 @@ React.createElement().
 
 // We won't go in-depth into how React.createElement() works, but you can start with 
 // the documentation if you'd like to learn more!
+
+const greatestDivEver = React.createElement(
+    "div",
+    null,
+    "i am div"
+);
