@@ -41,3 +41,19 @@ const owlCat = (
         src={pics.owlCat}
         alt="Ghastly Abomination" />
 );
+
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const goose = 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-goose.jpg';
+
+// Declare new variable here:
+const gooseImg = (
+    <img src={goose}
+        alt="duck"
+        height="400px"
+        width="400px" />
+);
+
+ReactDOM.render(gooseImg, document.getElementById('app'));
