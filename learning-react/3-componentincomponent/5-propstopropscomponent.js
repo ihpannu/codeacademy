@@ -21,3 +21,47 @@ render() {
 // storage object. At the same time, each piece of passed-in information is called a prop. 
 // This means that props could refer to two pieces of passed-in information, or it could refer to 
 // the object that stores those pieces of information :(
+
+// Greeting.js File 
+
+import React from 'react';
+
+export class Greeting extends React.Component {
+  render() {
+    return <h1>Hi there, {this.props.name}!</h1>;
+  }
+}
+
+// App.js File 
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Greeting } from './Greeting';
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>
+          Hullo and, "Welcome to The Newzz," "On Line!"
+        </h1>
+        <Greeting name="Harman"/>
+        <article>
+          Latest newzz:  where is my phone?
+        </article>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <App />, 
+  document.getElementById('app')
+);
+
+// Results 
+
+// Hullo and, "Welcome to The Newzz," "On Line!"
+
+// Hi there, Harman!
+// Latest newzz: where is my phone?
