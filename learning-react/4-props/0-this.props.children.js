@@ -1,19 +1,64 @@
-this.props.children
+// this.props.children Every component 's props object has a property named
+// children. this.props.children will return everything in between a component
+// 's opening and closing JSX tags. So far, all of the components that you 've
+// seen have been self-closing tags, such as <MyComponentClass />. They don' t
+// have to be !You could write < MyComponentClass > </MyComponentClass>, and it
+// would still work.this.props.children would return everything in between <
+// MyComponentClass > and < /MyComponentClass>. Look at BigButton.js. In Example
+// 1, <BigButton>'s this.props.children would equal the text, "I am a child of
+// BigButton." In Example 2, <BigButton>'s this.props.children would equal a
+// <LilButton / > component.In Example 3, < BigButton > 's this.props.children
+// would equal undefined. If a component has more than one child between its JSX
+// tags, then this.props.children will return those children in an
+// array.However, if a component has only one child, then this.props.children
+// will return the single child, not wrapped in an array. App.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {List} from './List';
 
-Every component 's props object has a property named children.
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <List type='Living Musician'>
+                    <li>Sachiko M</li>
+                    <li>Harvey Sid Fisher</li>
+                </List>
+                <List type='Living Cat Musician'>
+                    <li>Nora the Piano Cat</li>
+                    <li>Nora the Dumb Cat</li>
+                </List>
+            </div>
+        );
+    }
+}
 
-this.props.children will return everything in between a component 's opening and closing JSX tags.
+ReactDOM.render(
+    <App/>, document.getElementById('app'));
 
-So far,
-all of the components that you 've seen have been self-closing tags, such as <MyComponentClass />. They don' t have to be !You could write < MyComponentClass > </MyComponentClass>,
-and it would still work.this.props.children would return everything in between < MyComponentClass > and < /MyComponentClass>.
+// List.js
 
-Look at BigButton.js. In Example 1, <BigButton>'s this.props.children would equal the text, "I am a child of BigButton."
+import React from 'react';
 
-In Example 2, <BigButton>'s this.props.children would equal a <LilButton / > component.In Example 3, < BigButton > 's this.props.children would equal undefined.
+export class List extends React.Component {
+    render() {
+        let titleText = `Favorite ${this.props.type}`;
+        if (this.props.children instanceof Array) {
+            titleText += 's';
+        }
+        return (
+            <div>
+                <h1>{titleText}</h1>
+                <ul>{this.props.children}</ul>
+            </div>
+        );
+    }
+}
 
-If a component has more than one child between its JSX tags,
-then this.props.children will return those children in an array.However,
-if a component has only one child,
-then this.props.children will return the single child,
-not wrapped in an array.
+// BONUS : Each < List > <List/>instance is passed a singular title : "Living
+// Musician" and "Living Cat Musician," respectively.Somehow, each < List >
+// <List/>counts its list - items and automatically adds an "s" to the end of its
+// title if the count is greater than one. We could add a second piano cat, and
+// the second list title would automatically pluralize.See if you can figure
+// out how the instances of the List component class are automatically
+// pluralizing their titles !
