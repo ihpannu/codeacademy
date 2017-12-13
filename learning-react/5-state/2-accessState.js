@@ -21,3 +21,27 @@ class TodayImFeeling extends React.Component {
 // The above component class reads a property in its state from inside of its
 // render function.Just like this.props, you can use this.state from any
 // property defined inside of a component class 's body.
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class App extends React.Component {
+  // constructor method begins here:
+  constructor() {
+    super();
+    this.state = {
+      title: 'Best App in the world Ok'
+    };
+  }
+
+  render() {
+    return (
+      <h1>
+        {this.state.title}
+      </h1>
+    );
+  }
+}
+
+ReactDOM.render(
+  <App/>, document.getElementById('app'));
