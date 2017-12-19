@@ -1,0 +1,52 @@
+const GUINEAPATHS = [
+  'https://image.ibb.co/bLO5h6/church_2464899_1920.jpg',
+  'https://image.ibb.co/jYRQh6/church_3015728_1920.jpg',
+  'https://image.ibb.co/evUd26/mont_saint_michel_688405_1920.jpg',
+  'https://image.ibb.co/gszNUm/mont_saint_michel_2489373_1920.jpg',
+  'https://image.ibb.co/doQU9m/moscow_2105606_1920.jpg',
+  'https://image.ibb.co/ebGrN6/san_francisco_1893985_1920.jpg',
+  'https://image.ibb.co/bMnCvR/canal_2989865_1920.jpg',
+  'https://image.ibb.co/cP3Vh6/eastern_state_penitentiary_3004123_1920.jpg',
+  'https://image.ibb.co/mHKsvR/fantasy_2995326_1920.jpg',
+  'https://image.ibb.co/jFdkFR/iceland_1979445_1920.jpg',
+  'https://image.ibb.co/gADwN6/lapland_2984828_1920.jpg'
+];
+
+class GuineaPigs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { currentGP: 0 };
+    this.interval = null;
+
+    this.nextGP = this.nextGP.bind(this);
+  }
+
+  nextGP() {
+    let current = this.state.currentGP;
+    let next = ++current % GUINEAPATHS.length;
+    this.setState({ currentGP: next });
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(this.nextGP, 5000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  render() {
+    let src = GUINEAPATHS[this.state.currentGP];
+    return (
+      <div>
+        <h1>React Photo Carousel</h1>
+        <img src={src} />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <GuineaPigs />, 
+  document.getElementById('app')
+);
