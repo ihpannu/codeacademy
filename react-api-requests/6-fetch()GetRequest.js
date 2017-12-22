@@ -22,7 +22,8 @@ function expandUrl() {
   networkError => console.log(networkError.message)
 )
 .then(jsonResponse => {
-  $responseField.append('<p> Your expanded URL is </p><p> ' + jsonResponse.longUrl + '</p>');
+  $responseField.append('<p> Your expanded URL is </p><p> ' 
+  + jsonResponse.longUrl + '</p>');
   return jsonResponse;
 })
 };
