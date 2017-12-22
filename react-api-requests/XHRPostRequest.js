@@ -1,5 +1,3 @@
-
-
 // Include data for accessing Google APIs
 
 const apiKey = '<Your API Key>';
@@ -65,10 +63,7 @@ function shorten() {
 $expandButton.click(expand);
 $shortenButton.click(shorten);
 
-
-
-
-// BoilerPlate 
+// BoilerPlate
 
 const xhr = new XMLHttpRequest;
 const url = 'https://api-to-call.com/endpoint';
@@ -84,7 +79,7 @@ xhr.onreadystatechange = function () {
 xhr.open('POST', url);
 xhr.send(data);
 
-// USING JQUERY 
+// USING JQUERY
 
 $.ajax({
   url: 'https://api-to-call.com/endpoint',
@@ -94,8 +89,13 @@ $.ajax({
   success(response) {
     console.log(response);
   },
-  
+
   error(jqXHR, status, errorThrown) {
     console.log(jqXHR);
   }
-}); 
+});
+
+fetch('https://api-to-call.com/endpoint').then(success(response => {
+  if () 
+  }
+))
