@@ -18,7 +18,13 @@ function expandUrl() {
       console.log(response.json());
     }
     throw new Error ('Request failed!');
-  })
+  },
+  networkError => console.log(networkError.message)
+)
+.then(jsonResponse => {
+  $responseField.append('<p> Your expanded URL is </p><p> ' + jsonResponse.longUrl + '</p>');
+  return jsonResponse;
+})
 };
 
 function shortenUrl() {};
