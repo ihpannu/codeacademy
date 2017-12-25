@@ -32,6 +32,47 @@ const weekDays = [
 
 // AJAX functions
 
+async function getVenues() {
+  const city = $input.val();
+  const urlToFetch =
+    url +
+    city +
+    "&venuePhotos=1&limit=10&client_id=" +
+    clientId +
+    "&client_secret=" +
+    clientSecret +
+    "&v=20170305";
+
+  try {
+    let response = await fetch(urlToFetch);
+    if (response.ok) {
+      let jsonResponse = await response.json();
+      console.log(jsonResponse);
+      let venues = jsonResponse.response.groups[0].items.map(
+        location => location.venue
+      );
+      console.log(venues);
+      return venues;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+} // getVenues end
+
+async function getForecast() {
+  const urlToFetch =
+    forecastUrl + apiKey + "&q=" + $input.val() + "&days=5&hour=11";
+  try {
+    let response = await fetch(urlToFetch);
+    if (response.ok) {
+      let jsonResponse = await response.json();
+      console.log(jsonResponse);
+      let days = jsonResponse.forecast.forecastday;
+      return days;
+    }
+  } catch (error) {}
+}
+
 // Render functions
 function renderVenues(venues) {
   $venueDivs.forEach(($venue, index) => {
@@ -41,17 +82,17 @@ function renderVenues(venues) {
       "</h2>" +
       '<img class="venueimage" src="' +
       imgPrefix +
-      "<img suffix>" +
+      venues[index].photos.groups[0].items[0].suffix +
       '"/>' +
       "<h3>Address:</h3>" +
       "<p>" +
-      "<address>" +
+      venues[index].location.address +
       "</p>" +
       "<p>" +
-      "<city>" +
+      venues[index].location.city +
       "</p>" +
       "<p>" +
-      "<country>" +
+      venues[index].location.country +
       "</p>";
     $venue.append(venueContent);
   });
@@ -62,16 +103,16 @@ function renderForecast(days) {
   $weatherDivs.forEach(($day, index) => {
     let weatherContent =
       "<h2> High: " +
-      "<max temp>" +
+      days[index].day.maxtemp_f +
       "</h2>" +
       "<h2> Low: " +
-      "<min temp>" +
+      days[index].day.mintemp_f +
       "</h2>" +
       '<img src="http://' +
-      "<icon>" +
+      days[index].hour[0].condition.icon +
       '" class="weathericon" />' +
       "<h2>" +
-      "<day of the week>" +
+      weekDays[(new Date(days[index].date)).getDay()] +
       "</h2>";
     $day.append(weatherContent);
   });
@@ -88,17 +129,3 @@ function executeSearch() {
 }
 
 $submit.click(executeSearch);
-
-async function getVenues() {
-  const city = $input.val();
-  const urlTofetch = `${url}${city}&venuePhotos=1&limit=10&client_id=
-  ${clientId}&client_secret=${clientSecret}&v=20170305`;
-
-  try {
-    let response = await fetch(urlTofetch);
-  }
-  catch(error) {
-    console.log(error);
-  }
-
-};
