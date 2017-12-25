@@ -6,8 +6,7 @@ const imgPrefix = "https://igx.4sqi.net/img/general/150x200";
 
 // APIXU Info
 const apiKey = "1f98496b77fb4a218d791620172412";
-const forecastUrl =
-  "https://api.apixu.com/v1/forecast.json?key=" + apiKey;
+const forecastUrl = "https://api.apixu.com/v1/forecast.json?key=";
 
 // Page Elements
 const $input = $("#city");
@@ -30,25 +29,6 @@ const weekDays = [
   "Saturday",
   "Sunday"
 ];
-
-// Promises
-
-async function getVenues() {
-  const city = $input.val();
-  const urlTofetch = `${url}${city}&venuePhotos=1&limit=10&client_id=${clientId}&client_secret=${clientSecret}&v=20170305`;
-
-  try {
-    let response = await fetch(urlTofetch);
-    if(response.ok) {
-      let jsonResponse = await response.json();
-      return jsonResponse;
-    }
-  }
-  catch(error) {
-    console.log(error);
-  }
-
-}
 
 // AJAX functions
 
@@ -109,3 +89,18 @@ function executeSearch() {
 
 $submit.click(executeSearch);
 
+async function getVenues() {
+  const city = $input.val();
+  const urlTofetch = `${url}${city}&venuePhotos=1&limit=10&client_id=${clientId}&client_secret=${clientSecret}&v=20170305`;
+
+  try {
+    let response = await fetch(urlTofetch);
+    if (response.ok) {
+      let jsonResponse = await response.json();
+      let venues = jsonResponse.response.groups[0].items;
+        console.log(venues);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
