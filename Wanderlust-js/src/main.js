@@ -1,12 +1,13 @@
 // Foursquare API Info
 const clientId = "2LDV0QRMVCZACZSSVB0EASNEJ0UNEK2WSNFLPXY3F01XZV0G";
-const clientSecret = HWT5ZPNCSAEXCS1MSZUGSYXMCKUXWC2UAHLDXUXJMGSDSEYD;
+const clientSecret = "HWT5ZPNCSAEXCS1MSZUGSYXMCKUXWC2UAHLDXUXJMGSDSEYD";
 const url = "https://api.foursquare.com/v2/venues/explore?near=";
 const imgPrefix = "https://igx.4sqi.net/img/general/150x200";
 
 // APIXU Info
 const apiKey = "1f98496b77fb4a218d791620172412";
-const forecastUrl = "";
+const forecastUrl =
+  "https://api.apixu.com/v1/forecast.json?key=" + apiKey;
 
 // Page Elements
 const $input = $("#city");
@@ -29,6 +30,13 @@ const weekDays = [
   "Saturday",
   "Sunday"
 ];
+
+// Promises
+
+async function getVenues() {
+  const city = $input.val();
+  const urlTofetch = `${url}${city}&venuePhotos=1&limit=10&client_id=${clientId}&client_secret=${clientSecret}&v=20170305`;
+}
 
 // AJAX functions
 
@@ -88,3 +96,4 @@ function executeSearch() {
 }
 
 $submit.click(executeSearch);
+
