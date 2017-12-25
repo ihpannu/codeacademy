@@ -36,6 +36,18 @@ const weekDays = [
 async function getVenues() {
   const city = $input.val();
   const urlTofetch = `${url}${city}&venuePhotos=1&limit=10&client_id=${clientId}&client_secret=${clientSecret}&v=20170305`;
+
+  try {
+    let response = await fetch(urlTofetch);
+    if(response.ok) {
+      let jsonResponse = await response.json();
+      return jsonResponse;
+    }
+  }
+  catch(error) {
+    console.log(error);
+  }
+
 }
 
 // AJAX functions
