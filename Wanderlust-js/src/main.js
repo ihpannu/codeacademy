@@ -91,16 +91,14 @@ $submit.click(executeSearch);
 
 async function getVenues() {
   const city = $input.val();
-  const urlTofetch = `${url}${city}&venuePhotos=1&limit=10&client_id=${clientId}&client_secret=${clientSecret}&v=20170305`;
+  const urlTofetch = `${url}${city}&venuePhotos=1&limit=10&client_id=
+  ${clientId}&client_secret=${clientSecret}&v=20170305`;
 
   try {
     let response = await fetch(urlTofetch);
-    if (response.ok) {
-      let jsonResponse = await response.json();
-      let venues = jsonResponse.response.groups[0].items;
-        console.log(venues);
-    }
-  } catch (error) {
+  }
+  catch(error) {
     console.log(error);
   }
-}
+
+};
