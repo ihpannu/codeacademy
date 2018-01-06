@@ -6,7 +6,7 @@ const imgPrefix = "https://igx.4sqi.net/img/general/150x200";
 
 // APIXU Info
 const apiKey = "1f98496b77fb4a218d791620172412";
-const forecastUrl = "https://api.apixu.com/v1/forecast.json?key=";
+const forecastUrl = 'https://api.apixu.com/v1/forecast.json?key=';
 
 // Page Elements
 const $input = $("#city");
