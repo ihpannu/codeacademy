@@ -125,6 +125,14 @@ class HighSchool extends School {
     console.log(sportsTeams);
   }
 }
+
+const lorraineHansbury = new PrimarySchool("Lorraine Hansbury", 514, 
+'Students must be picked up by a parent, guardian, or a family member over the age of 13.');
+
+lorraineHansbury.quickFacts();
+School.pickSubstituteTeachers(['Jamal Crawford', 'Lou Williams', 'J. R. Smith', 'James Harden', 'Jason Terry', 'Manu Ginobli']);
+
+const alSmith = new HighSchool("Al E. Smith", 451, ['Baseball', 'Basketball', 'Volleyball', 'Track and Field']);
 },{}],4:[function(require,module,exports) {
 "use strict";
 
